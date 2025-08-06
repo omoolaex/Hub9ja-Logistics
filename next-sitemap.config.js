@@ -1,17 +1,10 @@
-// next-sitemap.config.js
+/** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: 'https://hub9jalogistics.markethub9ja.com',
   generateRobotsTxt: true,
-  sitemapSize: 7000,
-  changefreq: 'weekly',
+  generateIndexSitemap: false,
+  changefreq: 'monthly',
   priority: 0.7,
-  exclude: ['/server-sitemap.xml'],
-  robotsTxtOptions: {
-    policies: [
-      {
-        userAgent: '*',
-        allow: '/',
-      },
-    ],
-  },
+  sitemapSize: 7000,
+  exclude: ['/admin', '/dashboard'], // If any
 };
