@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://hub9jalogistics.markethub9ja.com
+
+# Sitemaps
+Sitemap: https://hub9jalogistics.markethub9ja.com/sitemap.xml

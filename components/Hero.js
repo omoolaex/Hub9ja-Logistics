@@ -1,42 +1,82 @@
-// components/Hero.js
-export default function Hero() {
+'use client';
+
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+
+export default function HeroSection() {
   return (
-    <section className="bg-[#E8F0FE] text-gray-900 py-16 px-6 md:px-12 lg:px-24">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
-        {/* Left content */}
-        <div className="flex-1 text-center md:text-left">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
-            Delivering Growth for <span className="text-[#0052CC]">Local Vendors</span>
+    <section className="relative bg-white overflow-hidden py-20 px-6 sm:px-12">
+      {/* Background Design Elements */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
+        <div className="absolute top-10 left-1/4 w-48 h-48 bg-green-100 rounded-full opacity-20 blur-2xl" />
+        <div className="absolute bottom-0 right-10 w-32 h-32 bg-yellow-100 rounded-full opacity-20 blur-2xl" />
+        <div className="absolute top-1/2 left-0 w-px h-48 bg-gray-200 opacity-40" />
+        <div className="absolute top-1/3 right-0 w-px h-56 bg-gray-200 opacity-30" />
+      </div>
+
+      <div className="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between max-w-7xl mx-auto gap-10">
+        {/* Left Content */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex-1 text-center md:text-left"
+        >
+          {/* Decorative Intro Text with Line & Dot */}
+          <div className="flex items-center justify-center md:justify-start mb-4 space-x-3">
+            {/* Dot */}
+            <div className="w-2 h-2 rounded-full bg-green-600" />
+            {/* Line */}
+            <div className="w-10 h-px bg-green-600" />
+            {/* Text */}
+            <p className="text-sm text-green-700 font-medium tracking-wide">
+              Welcome to The Logistics that has you in mind
+            </p>
+          </div>
+
+          {/* Main Headline */}
+          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
+            Delivery that gives you Confidence and Peace of Mind
           </h1>
-          <p className="text-base md:text-lg text-gray-700 mb-6">
-            Hub9ja Logistics helps local vendors scale with seamless delivery, improved buyer trust, and nationwide reach.
+
+          {/* Subtext */}
+          <p className="text-gray-700 text-base md:text-lg max-w-xl">
+            Experience affordable, fast, and secure delivery tailored to support local vendors and growing businesses — powered by the people, for the people.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+
+          {/* CTA Buttons */}
+          <div className="mt-6 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
             <a
-              href="https://wa.me/234XXXXXXXXXX"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#0052CC] text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700 transition duration-200"
+              href="#book"
+              className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl text-sm font-medium shadow transition"
             >
-              Chat on WhatsApp
+              Book a Delivery
             </a>
             <a
-              href="#services"
-              className="text-[#0052CC] font-semibold hover:underline"
+              href="#pricing"
+              className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-6 py-3 rounded-xl text-sm font-medium shadow transition"
             >
-              Explore Our Services →
+              See Our Pricing
             </a>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Right image */}
-        <div className="flex-1">
-          <img
-            src="/images/logistics-hero.png" // Replace with actual image path
-            alt="Local vendor logistics"
-            className="w-full max-w-md mx-auto"
+        {/* Right Image */}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex-1"
+        >
+          <Image
+            src="/images/general-logistics-hero.png" // <-- Replace with appropriate image path or Lottie if set up
+            alt="Hub9ja Delivery Illustration"
+            width={600}
+            height={600}
+            className="w-full h-auto object-contain"
+            priority
           />
-        </div>
+        </motion.div>
       </div>
     </section>
   );
