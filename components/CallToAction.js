@@ -20,7 +20,7 @@ export default function CallToAction() {
           Fast pickups, same-day deliveries, and trusted dispatch solutions that keep your business moving forward.
         </p>
         <a
-          href="https://wa.me/2348012345678"
+          href="https://wa.me/2349153544043"
           className="inline-block bg-yellow-400 text-green-900 px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-yellow-300 transition duration-300"
         >
           Book a Pickup Now on WhatsApp

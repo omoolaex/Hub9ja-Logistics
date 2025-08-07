@@ -4,10 +4,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
+import { useModal } from './ModalContext';
 
 export default function Header() {
   const [isSticky, setSticky] = useState(false);
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const { openModal } = useModal(); 
 
   useEffect(() => {
     const handleScroll = () => setSticky(window.scrollY > 50);
@@ -39,13 +41,13 @@ export default function Header() {
           </nav>
 
           {/* Desktop CTA */}
-          <Link
-            href="/booking"
+          <button
+            onClick={() => openModal('individual')} // ✅ Open Individual form
             className="hidden md:flex items-center space-x-2 border border-green-600 text-green-700 bg-white px-4 py-2 rounded-md font-medium hover:bg-green-50 transition"
           >
             <span>Booking</span>
             <ArrowRight size={16} />
-          </Link>
+          </button>
 
           {/* Mobile Toggle */}
           <button
@@ -60,7 +62,7 @@ export default function Header() {
       {/* Overlay */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-40 flex md:hidden">
-          {/* Slide-in Menu (3/4 width) */}
+          {/* Slide-in Menu */}
           <div className="w-3/4 bg-white h-full shadow-md transform transition-transform duration-300 ease-in-out">
             <div className="p-6 flex justify-between items-center border-b border-gray-200">
               <Image src="/logo.png" alt="Hub9ja Logistics" width={100} height={32} />
@@ -96,23 +98,22 @@ export default function Header() {
                 <span>Contact</span>
               </Link>
 
-              {/* CTA Button */}
-              <Link
-                href="/booking"
-                onClick={closeMenu}
+              {/* Mobile CTA */}
+              <button
+                onClick={() => {
+                  openModal('individual'); // ✅ Open modal
+                  closeMenu();
+                }}
                 className="mt-4 flex items-center space-x-2 border border-green-600 text-green-700 bg-white px-4 py-2 rounded-md font-medium hover:bg-green-50 transition w-max"
               >
                 <ArrowRight size={18} />
                 <span>Booking</span>
-              </Link>
+              </button>
             </nav>
           </div>
 
-          {/* Click-outside overlay (1/4) */}
-          <div
-            className="w-1/4 bg-black/30"
-            onClick={closeMenu}
-          />
+          {/* Click-outside area */}
+          <div className="w-1/4 bg-black/30" onClick={closeMenu} />
         </div>
       )}
     </header>

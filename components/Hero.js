@@ -2,8 +2,10 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useModal } from './ModalContext';
 
 export default function HeroSection() {
+  const { openModal } = useModal();
   return (
     <section className="relative bg-white overflow-hidden py-20 px-6 sm:px-12">
       {/* Background Design Elements */}
@@ -46,12 +48,12 @@ export default function HeroSection() {
 
           {/* CTA Buttons */}
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-            <a
-              href="#book"
+            <button
+              onClick={() => openModal('individual')} // ✅ Trigger individual form modal
               className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl text-sm font-medium shadow transition"
             >
               Book a Delivery
-            </a>
+            </button>
             <a
               href="#pricing"
               className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-6 py-3 rounded-xl text-sm font-medium shadow transition"

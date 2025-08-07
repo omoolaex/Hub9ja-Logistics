@@ -1,53 +1,37 @@
 // app/layout.jsx
-import { Geist, Geist_Mono } from "next/font/google";
-import { Poppins } from "next/font/google";
+import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import Script from "next/script"; // ✅ Required to embed GA script properly
+import Script from "next/script";
+import { ModalProvider } from "../components/ModalContext";
 
 // Font Setup
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
+const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"], display: "swap" });
+const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"], display: "swap" });
+const poppins = Poppins({ variable: "--font-poppins", subsets: ["latin"], weight: ["400", "600", "700"], display: "swap" });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  display: "swap",
-});
-
-// Metadata – SEO friendly
 export const metadata = {
   metadataBase: new URL("https://hub9jalogistics.markethub9ja.com"),
   title: {
-    default: "Markethub9ja Logistics",
-    template: "%s | Markethub9ja Logistics",
+    default: "Hub9ja Logistics",
+    template: "%s | Hub9ja Logistics",
   },
-  description: "Delivering Growth for Local Vendors",
-  keywords: ["Logistics", "Ecommerce", "Nigeria", "Dispatch", "Vendors"],
-  authors: [{ name: "Markethub9ja", url: "https://markethub9ja.com.ng" }],
-  creator: "Markethub9ja Team",
+  description: "Reliable delivery services for vendors & customers in Lagos and across Nigeria.",
+  keywords: ["Logistics Lagos", "Delivery Lagos", "Ecommerce dispatch", "Same-day delivery Nigeria", "Vendor shipping"],
+  authors: [{ name: "Markethub9ja", url: "https://markethub9ja.com" }],
+  creator: "Markethub9ja Global Ltd",
   openGraph: {
-    title: "Markethub9ja Logistics",
-    description: "Delivering Growth for Local Vendors",
+    title: "Hub9ja Logistics",
+    description: "Fast & secure dispatch services for vendors and buyers in Lagos.",
     url: "https://hub9jalogistics.markethub9ja.com",
-    siteName: "Markethub9ja Logistics",
+    siteName: "Hub9ja Logistics",
     images: [
       {
         url: "/images/logo.png",
         width: 1200,
         height: 630,
-        alt: "Markethub9ja Logistics",
+        alt: "Hub9ja Logistics",
       },
     ],
     locale: "en_NG",
@@ -55,9 +39,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Markethub9ja Logistics",
-    description: "Delivering Growth for Local Vendors",
-    creator: "@Markethub9ja",
+    title: "Hub9ja Logistics",
+    description: "Trusted logistics & delivery partner for vendors in Lagos.",
+    creator: "@Hub9jaLogistics",
     images: ["/images/logo.png"],
   },
   icons: {
@@ -67,7 +51,7 @@ export const metadata = {
   },
   manifest: "/site.webmanifest",
   verification: {
-    google: "xZGro4lB8lvz72WNGinTSoTOezqs4LSqp2jZrE8UXbU", // ✅ Google Site Verification Meta Tag
+    google: "xZGro4lB8lvz72WNGinTSoTOezqs4LSqp2jZrE8UXbU",
   },
 };
 
@@ -75,12 +59,24 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* ✅ Google Tag Manager Script */}
+        {/* ✅ Google Tag Manager Container */}
         <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-850KBDLBW4"
+          id="google-tag-manager"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GT-T9WXSSQ7'); // Replace with your GTM-ID
+            `,
+          }}
         />
-        <Script id="gtag-init" strategy="afterInteractive">
+
+        {/* ✅ Google Analytics Script */}
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-850KBDLBW4" />
+        <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -92,9 +88,19 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}
       >
-        {children}
-        <Analytics /> {/* ✅ Vercel Analytics */}
-        <SpeedInsights /> {/* ✅ Real user performance tracking */}
+        {/* ✅ NoScript fallback for GTM */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GT-T9WXSSQ7"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
+
+        <ModalProvider>{children}</ModalProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

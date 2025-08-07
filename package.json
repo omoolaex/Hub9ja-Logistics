@@ -14,18 +14,40 @@
     "@lottiefiles/react-lottie-player": "^3.6.0",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
+    "axios": "^1.11.0",
+    "dotenv": "^17.2.1",
     "framer-motion": "^12.23.12",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.536.0",
     "next": "15.4.5",
     "next-sitemap": "^4.2.3",
+    "nodemailer": "^7.0.5",
+    "puppeteer": "^24.16.0",
+    "qrcode-terminal": "^0.12.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "whatsapp-web.js": "^1.23.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.11",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.11"
-  }
+  },
+  "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "main": "next-sitemap.config.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omoolaex/Hub9ja-Logistics.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/omoolaex/Hub9ja-Logistics/issues"
+  },
+  "homepage": "https://github.com/omoolaex/Hub9ja-Logistics#readme"
 }

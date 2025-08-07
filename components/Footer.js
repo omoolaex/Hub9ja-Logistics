@@ -40,8 +40,8 @@ export default function Footer() {
         <div>
           <h4 className="font-semibold text-[#FFEB3B] mb-2">Talk to Us</h4>
           <ul className="text-sm space-y-2">
-            <li>Email: <a href="mailto:support@hub9jalogistics.com" className="hover:underline">support@hub9jalogistics.com</a></li>
-            <li>WhatsApp: <a href="https://wa.me/234XXXXXXXXXX" className="hover:underline">+234 XXX XXX XXXX</a></li>
+            <li>Email: <a href="mailto:support@markethub9ja.com" className="hover:underline">support@markethub9ja.com</a></li>
+            <li>WhatsApp: <a href="https://wa.me/2349153544043" className="hover:underline">+234 915 354 4043</a></li>
             <li>Location: Lagos, Nigeria</li>
           </ul>
         </div>
