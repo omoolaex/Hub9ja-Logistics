@@ -59,7 +59,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* ✅ Google Analytics - MUST BE IN HEAD */}
+        {/* ✅ Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-850KBDLBW4"
           strategy="beforeInteractive"
@@ -73,7 +73,7 @@ export default function RootLayout({ children }) {
           `}
         </Script>
 
-        {/* ✅ Google Tag Manager - HEAD Snippet */}
+        {/* ✅ Google Tag Manager - HEAD */}
         <Script id="gtm-head" strategy="beforeInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -84,16 +84,15 @@ export default function RootLayout({ children }) {
           `}
         </Script>
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}
-      >
-        {/* ✅ NoScript fallback for GTM */}
+
+      <body className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}>
+        {/* ✅ GTM NoScript must come FIRST inside <body> */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-55CLWM44"
             height="0"
             width="0"
-            style={{ display: "none", visibility: "hidden" }}
+            style={{ display: 'none', visibility: 'hidden' }}
           ></iframe>
         </noscript>
 
