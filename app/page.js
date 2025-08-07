@@ -25,7 +25,7 @@ export const metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://hub9jalogistics.markethub9ja.com/icon.png',
+        url: 'https://hub9jalogistics.markethub9ja.com/logo.png',
         width: 1200,
         height: 630,
         alt: 'Hub9ja Logistics',
@@ -37,7 +37,7 @@ export const metadata = {
     title: 'Logistics in Lagos | Hub9ja Logistics',
     description:
       'Secure, fast and budget-friendly delivery services for vendors and customers in Lagos.',
-    images: ['https://hub9jalogistics.markethub9ja.com/icon.png'],
+    images: ['https://hub9jalogistics.markethub9ja.com/logo.png'],
     site: '@Hub9jaLogistics',
   },
 };
@@ -47,7 +47,7 @@ export default function HomePage() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "Hub9ja Logistics",
-    image: "https://hub9jalogistics.markethub9ja.com/icon.png",
+    image: "https://hub9jalogistics.markethub9ja.com/logo.png",
     url: "https://hub9jalogistics.markethub9ja.com",
     telephone: "+2349053544043",
     address: {
